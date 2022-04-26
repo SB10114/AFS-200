@@ -1,7 +1,8 @@
 applePrice = .50
 userName = input("What is your name? ")
 
-applesPurchased = int()
-totalAmount = int()
+message = ' hello {}, apples cost ${:,.2f} each, how many would you like to buy?'.format(userName, applePrice)
 
-print('Welcome ' + userName + 'each apple costs ' + applePrice + applesPurchased + 'Thank you ' + userName + 'for purchasing ' + applesPurchased + 'for the amount of ')
+quantity = int(input(message))
+
+print('Thank you {} for your purchase of {:,} apples at a cost of ${:,.2f} each '.format(userName, quantity, applePrice))
