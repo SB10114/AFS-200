@@ -1,32 +1,65 @@
-import random
+word = 'pineapple'
+
+win = False 
+
+guesses = [ ]
+
+wordBoard = ['_', '_', '_', '_', '_', '_', '_', '_', '_']
+
+turns = 5
+while turns > 0 and not win:
+    def showBoard():
+        str = ''
+        for char in wordBoard:
+            str += char + ' '
+        print(str)
+    showBoard()
+
+    guess = input('Please choose a letter: ')
 
 
-name = input("What is your name? ") 
-print("Good Luck ! ", name)
- 
-words = ['pineapple', 'alphabet', 'salamandar', 'goose', 'guess']
- 
+    def checkLetter(guess):
+        found = False
+        for i in range(0, len(wordBoard)):
+            if word[i] == guess:
+                found = True
+                wordBoard[i] = guess
+                #print(wordBoard[i])
+        return found
 
-word = random.choice(words)
- 
- 
-print("Guess a letter")
- 
-guesses = ''
- 
 
-turns = 12
- 
- 
-while turns > 0:
-    failed = 0
+    guessed = False
+    for i in range(0, len(guesses)):
+            if guesses[i] == guess:
+                guessed = True
+
+
+    if guessed == True:
+        print('You have used this letter, guess again!')
+    else:
+        guesses.append(guess)
+        print(guesses)
+        found = checkLetter(guess)
+        if found == False:
+            print('This letter is not in the word ')
+            #take a turn away
+        else: 
+            print('Yes this is a letter! ') 
+            #iterate through wordBoard(for loop)
+            #is there any item that is = to _
+            #if yes, then leave it
+            #if not, the word is found win = true
+
+    showBoard()
+
+failed = 0
      
-    for char in word:
+for char in word:
       
-        if char in guesses:
-            print(char, end=" ")
+    if char in guesses:
+        print(char, end=" ")
              
-        else:
+    else:
             print("_")
             print(char, end=" ")
              
@@ -57,6 +90,7 @@ while turns > 0:
     
         print("You have", + turns, 'more guesses')
          
-         
-        if turns == 0:
-            print("You Loose")
+if turns == 0:
+    print("You Loose")
+#if statement that checks IF they won and prints word and congratulations
+#if statement checks if turns are smaller than one
