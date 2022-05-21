@@ -14,21 +14,21 @@ class dice:
     def getCurrentFaceValue(self):
         return self.firstFace
 
-    def showDieFace(self):
+    def showDiceFace(self):
         print(f'{dice.sides[self.getCurrentFaceValue()]} {self.getCurrentFaceValue()}', end= "")
 
 def gamePlay():
-    myDie = [dice(), dice(), dice(), dice(), dice()]
+    myDice = [dice(), dice(), dice(), dice(), dice()]
     
-    for die in myDie:
-        die.roll()
-        die.showDieFace()
+    for die in myDice:
+       die.roll()
+       die.showDiceFace()
         
 
-    # yahtzee = all(die.getCurrentFaceValue() == myDie[0].getCurrentFaceValue() for die in myDie)
-    # return yahtzee
+    yahtzee = all(die.getCurrentFaceValue() == myDice[0].getCurrentFaceValue() for die in myDice)
     
-    # if yahtzee:
-    #     print('YAHTZEE')
+    
+    if yahtzee:
+        print('YAHTZEE')
 
 gamePlay()
