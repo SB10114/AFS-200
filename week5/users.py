@@ -25,16 +25,16 @@ class User():
     def setLastName(self, last):
         self.lname = last
 
-    def getLastName(self):
+    def getEmail(self):
         return self.email
 
-    def getLastName(self):
+    def getUserName(self):
         return self.username
 
-    def getLastName(self):
+    def getPassword(self):
         return self.password
 
-    def getLastName(self):
+    def getUuid(self):
         return self.uuid
     
     
@@ -51,7 +51,7 @@ class AuthorizedUsers():
 
 
 def getData(numUsers, nationality):
-    URL = "https://randomuser.me/api/?results"+str(numUsers)+"&nat="+nationality
+    URL = "https://randomuser.me/api/?results="+str(numUsers)+"&nat="+nationality
     try: 
         response = requests.get(URL, timeout=5)
         response.raise_for_status()
