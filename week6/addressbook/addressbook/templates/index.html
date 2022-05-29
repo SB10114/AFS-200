@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Address Book</title>
+    <style>
+        .search-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+            align-items: center;
+            justify-content: center;
+            max-width: 30rem;
+            font-size: 2rem;
+            margin: 0 auto;
+        }
+        .search-wrapper form {
+            max-width: 30rem;
+            font-size: 2rem;
+            margin: 0 auto;
+        }
+        
+        
+        .search {
+            font-size: 1rem;
+            size: 30rem;
+        }
+        
+        .rolodex {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: .25rem;
+            margin-top: 1rem;
+        }
+        
+        .card {
+            display: grid;
+            grid-template-columns: (100px, auto);
+            grid-template-rows: repeat(3, auto);
+            gap: 0.25rem;
+            border: 2px solid black;
+            padding: 0.5rem;
+        }
+        
+        .card .photo {
+            grid-column: 1 / 2;
+            grid-row: 1 / -1;
+            width: 100px;
+        }
+        
+        .card .photo img {
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .card .name {
+            grid-column: 2 / 3;
+            font-size: 1.3rem;
+        }
+        
+        .card .email {
+            grid-column: 2 / 3;
+            font-size: 1rem;    
+            color: #777;
+        }
+        
+        .card .phone {
+            grid-column: 2 / 3;
+            font-size: 1rem;    
+            color: #777;
+        }
+        
+        .hide {
+            display: none;
+        }</style>
+</head>
+<body>
+    <h1>My Address Book</h1>
+    <div class="rolodex">
+        {%for user in contacts%}
+		<div class="card">
+            <div class="photo"><img src="{{user.photo}}" alt=""></div>
+            <div class="name">{{user.firstname}} {{user.lastname}}</div>
+            <div class="phone">{{user.phone}}</div>
+            <div class="email">{{user.email}}</div>
+        </div> 
+		{%endfor%}
+                
+    </div>
+</body>
+</html>
