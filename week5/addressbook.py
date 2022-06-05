@@ -1,25 +1,25 @@
 import requests
 
-        
+
 class AddressBook():
     def __init__(self):
         self.addresses = []
-        
+
     def addAddress(self,address):
         self.addresses.append(address)
-        
+
     def getAllAddresses(self):
         return self.addresses
-    
+
     def findAllMatching(self,searchStr):
         results = []
         for address in self.addresses:
-            
+
             if address.getFirstName().lower().startswith(searchStr.lower()) or address.getLastName().lower().startswith(searchStr.lower()):
                 results.append(address)
-                
+
         return results
-    
+
 class Contact():
     def __init__(self, first, last, email, phone, photo):
         self.fname = first
@@ -48,4 +48,4 @@ class Contact():
         return self.phone
 
     def getPhoto(self):
-        return self.photo
+        return self.photo 
