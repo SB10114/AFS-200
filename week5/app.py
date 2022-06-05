@@ -53,3 +53,14 @@ for user in data["results"]:
 def hello():
     print(users.addresses)
     return render_template('index.html', results = users.getAllAddresses())
+
+@app.route('/search', methods=['GET', 'POST'])
+def searchBar():
+    if request.method == 'POST':
+       search = request.form.get('search')
+       print(search)
+       findUsers = users.findAllMatching(search)
+       return render_template('index.html', results = findUsers)
+
+    else:
+        return "no contacts were found"
