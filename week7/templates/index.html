@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+    <title>Flask Address Book</title>
+</head>
+<body>
+    <h1>Test your Knowledge</h1>
+    <h3>Category</h3>
+    <div class="search-wrapper">
+        <form action="http://127.0.0.1:5000/search" method="POST">
+            {%for user in results%}
+            <div class="card">
+                <label class="question">{{user.question}}</label>
+                {%for answer in user.shuffleanswers%}
+                <input type="radio" id="id" name="{{user.id}}" value="{{answer}}" required>
+                    <label for="{{user.id}}">{{answer |safe }}</label>
+                    {%endfor%}
+                <!-- another forLoop to iterate through user.shuffleAnswers that has a radio button with a name == user.id -->
+            </div> 
+            {%endfor%}
+            <button type="submit">Score</button>
+            <button onclick="location.href='/'">Clear Results</button>
+        </form>
+
+    </div>
+    <div class="rolodex">
+       
+
+    </div>
+</body>
+</html> 
