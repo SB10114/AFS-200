@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score page</title>
+  </head>
+  <body>
+    <h1>Score page</h1>
+
+    <div>{%for score in results.correctanswers%} correct {%endfor%}</div>
+    <div>{%for score in results.incorrectanswers%} incorrect {%endfor%}</div>
+    <button onclick="location.href='/'">Clear Results</button>
+  </body>
+</html>

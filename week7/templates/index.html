@@ -14,7 +14,7 @@
         <form action="http://127.0.0.1:5000/search" method="POST">
             {%for user in results%}
             <div class="card">
-                <label class="question">{{user.question}}</label>
+                <label class="question">{{user.question |safe}}</label>
                 {%for answer in user.shuffleanswers%}
                 <input type="radio" id="id" name="{{user.id}}" value="{{answer}}" required>
                     <label for="{{user.id}}">{{answer |safe }}</label>
@@ -23,7 +23,7 @@
             </div> 
             {%endfor%}
             <button type="submit">Score</button>
-            <button onclick="location.href='/'">Clear Results</button>
+            
         </form>
 
     </div>

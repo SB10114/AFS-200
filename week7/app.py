@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 import trivia.triviaquestion
 import trivia.triviagame
@@ -48,7 +48,20 @@ print(game.questions)
 def hello():
     return render_template('index.html', results = game.questions)
 
+@app.route('/search', methods=['GET', 'POST'])
+def score():
+    if request.method == 'POST':
+       answers = []
+       for question in game.questions:
+        
+            answer = request.form.get(str(question.id))
+            print(answer)
+            answers.append(answer)
+       game.scoreQuestion(answers)
+       return render_template('results.html', results = game)
 
+    else:
+        return "no answers were found"
 
 if __name__ == "__main__":
     app.run()
